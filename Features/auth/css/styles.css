@@ -36,21 +36,18 @@ body {
 }
 
 .img-holder {
-    color: aqua;
-    flex-grow: 1;
-
+    flex: 1.5;
     overflow: hidden;
 
     img {
-        width: 100%;
         height: 100%;
+        width: 100%;
     }
 }
 
 
 .sign-content {
-    background-color: rebeccapurple;
-    flex-grow: 1;
+    flex: 1;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -90,7 +87,6 @@ body {
 }
 
 .sign-in {
-    flex-grow: 2;
     justify-content: center;
     gap: 30px;
 }
