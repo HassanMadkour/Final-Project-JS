@@ -13,17 +13,32 @@
       <section class="sign-content">
         <h2>Sign Up</h2>
         <section class="sign-inputs">
-          <input type="text" placeholder="Your Name" />
-          <input type="email" placeholder="your Email" />
-          <input type="password" placeholder="Password" />
-          <input type="password" placeholder="repeat your Password" />
+          <div class="input-span-holder">
+            <input type="text" placeholder="Your Name" />
+            <span class="validation-disabled validation-error"></span>
+          </div>
+          <div class="input-span-holder">
+            <input type="email" placeholder="your Email" />
+            <span class="validation-disabled validation-error"></span>
+          </div>
+          <div class="input-span-holder">
+            <input type="password" placeholder="Password" />
+            <span class="validation-disabled validation-error"></span>
+          </div>
+          <div class="input-span-holder">
+            <input type="password" placeholder="repeat your Password" />
+            <span class="validation-disabled validation-error"></span>
+          </div>
         </section>
+        <div class="accept-agreement-holder"></div>
         <div class="accept-argreement">
           <input type="checkbox" id="agree-check" />
           <label for="agree-check">
             i agree all statements in <a href=""> Terms of service </a>
           </label>
         </div>
+        <span class="validation-disabled validation-error"></span>
+      </div>
         <button>Register Now</button>
         <p>already have an account? <a href="./login.html">Login Now</a></p>
       </section>
@@ -31,5 +46,7 @@
         <img src="../../assets/images/register_bg.avif" alt="" />
       </div>
     </section>
+
+    <script src="./js/register.js" type="module"></script>
   </body>
 </html>

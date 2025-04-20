@@ -8,24 +8,25 @@
     <link rel="stylesheet" href="../../css/global.css" />
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/media_query.css" />
-    <link rel="stylesheet" href="../../css/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../../css/bootstrap-icons.min.css" />
   </head>
   <body>
     <header>
       <div class="header-holder">
         <div class="logo">
-          <span>Hi, Hassan</span>
+          <span></span>
           <div class="cart-icon">
-            <i class="bi bi-cart"></i>  
-
+            <i class="bi bi-cart"></i>
           </div>
         </div>
         <nav class="nav-holder">
           <ul>
-            <li>Home</li>
-            <li>About us</li>
-            <li>Products</li>
-            <li>contact</li>
+            <li>
+              <a href="#home">Home</a>
+            </li>
+            <li><a href="#about">About us</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#contact">contact</a></li>
           </ul>
         </nav>
         <div class="logout-holder">
@@ -34,8 +35,36 @@
       </div>
     </header>
     <!-- HeroSection  -->
-    <section class="hero-section">
+    <section class="hero-section" id="home">
       <div class="slider">
+        <div class="slider-item">
+          <div class="slider-content">
+            <h2>Hi, Hassan</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Voluptatem repellat deserunt fugit, eius velit eaque modi eum,
+              similique officia beatae minus quia itaque recusandae? Tenetur
+              cumque reiciendis enim quaerat ducimus.
+            </p>
+            <br /><br />
+            <p>Lorem ipsum dolor sit amet consectetur.</p>
+            <button>Shop Now</button>
+          </div>
+        </div>
+        <div class="slider-item">
+          <div class="slider-content">
+            <h2>Hi, Hassan</h2>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Voluptatem repellat deserunt fugit, eius velit eaque modi eum,
+              similique officia beatae minus quia itaque recusandae? Tenetur
+              cumque reiciendis enim quaerat ducimus.
+            </p>
+            <br /><br />
+            <p>Lorem ipsum dolor sit amet consectetur.</p>
+            <button>Shop Now</button>
+          </div>
+        </div>
         <div class="slider-item">
           <div class="slider-content">
             <h2>Hi, Hassan</h2>
@@ -53,26 +82,50 @@
       </div>
     </section>
 
+    <!-- about section  -->
+    <section class="about-us" id="about">
+      <div class="container">
+        <div class="about-content">
+          <div class="about-image">
+            <img src="../../assets/images/hero1.png" alt="Electronics Store" />
+          </div>
+          <div class="about-text">
+            <h2>About Our Electronics Store</h2>
+            <p>
+              Welcome to ElectroMart, your trusted destination for the latest
+              and greatest in electronics. From high-performance laptops and
+              smartphones to essential accessories and gadgets, we provide
+              top-tier products at competitive prices.
+            </p>
+            <p>
+              Our mission is to deliver innovation and quality right to your
+              doorstep. With fast shipping, reliable customer service, and a
+              passion for technology, we aim to make your shopping experience
+              seamless and satisfying.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- products section  -->
-    <section class="products-section">
+    <section class="products-section" id="products">
       <h2>Our products</h2>
       <div class="search-bar">
-        
         <input type="text" placeholder="Search for products ..." />
-        <button class="search-icon" title="search"> 
+        <button class="search-icon" title="search">
           <i class="bi bi-search"></i>
         </button>
-        <button class="filter-icon"  title="filter">
+        <button class="filter-icon" title="filter">
           <i class="bi bi-sliders2-vertical"></i>
         </button>
-
       </div>
       <div class="filter-section">
         <div class="filter-header">
           <h3>Filter</h3>
-          <button title="close-filter-icon"> <i class="bi bi-x-lg"> </i></button>
+          <button title="close-filter-icon"><i class="bi bi-x-lg"> </i></button>
         </div>
-          <div class="filter-options">
+        <div class="filter-options">
           <div class="filter-option">
             <h4>Brand</h4>
             <label for="apple">Apple</label>
@@ -82,67 +135,74 @@
           </div>
           <div class="filter-option">
             <h4>Price</h4>
-            <input type="range" min="0" max="1000" value="500" id="price-range" >
+            <input
+              type="range"
+              min="0"
+              max="1000"
+              value="500"
+              id="price-range"
+            />
             <label for="price-range">500</label>
           </div>
-          </div>
-          <button>Filter</button>
+        </div>
+        <button>Filter</button>
       </div>
-      
+
+      <br />
       <div class="products-container">
         <div class="category-section">
           <h3>Categories</h3>
-          <hr>
-         <div class="category-item-container">
-          <ul>
-            <li>All</li>
-            <li>Mobile</li>
-            <li>Tablets</li>
-            <li>Desktop</li>
-            <li>Camera</li>
-            <li>Accessories</li>
-          </ul>
-         </div>
-        </div>
-        
-        <div class="product-items-container"> 
-        
-          <div class="product-item">
-            <div class="product-img-holder">
-              <img src="../../assets/images/pro1.png" alt="" />
-            </div>
-            <div class="product-info">
-              <h4 class="product-name">Phone</h4>
-              <p class="product-desc">Lorem
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente, est. Natus et consequatur dolorem enim mollitia. Ea, ullam est ex amet laboriosam a nostrum itaque magni quae, voluptas, explicabo corrupti.
-                ipsum dolor sit amet consectetur adipisicing elit.</p>
-              <div class="product-price">
-                <span class="product-price">$500</span>
-                <button title="add-to-cart-icon"> <i class="bi bi-cart-plus-fill"></i> </button>
-              </div>
-            </div>
+          <hr />
+          <div class="category-item-container">
+            <ul>
+              <li>📱 All</li>
+              <li>💻 Laptops</li>
+              <li>📱 Mobiles</li>
+              <li>🎧 Accessories</li>
+              <li>🕹 Gaming</li>
+              <li>📷 Cameras</li>
+              <li>⌚ Smartwatches</li>
+              <li>🖥 Monitors</li>
+              <li>💾 Storage</li>
+            </ul>
           </div>
         </div>
-      
-      </div>
-      <br>
-      <div class="page-number">
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button>4</button>
-        <button>5</button>
-        
-      </div>
 
+        <div class="product-items-container"></div>
+      </div>
+      <br />
     </section>
-    <section class="about-us"></section>
-    <footer>
-      <pre>
-        <h2>about us</h2>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem
-      </pre>
+
+    <footer id="contact">
+      <div class="footer-content">
+        <div class="footer-section contact">
+          <h3>Contact Us</h3>
+          <p>Email: support@electromart.com</p>
+          <p>Phone: +123 456 7890</p>
+          <p>Address: 123 Tech Street, Silicon City</p>
+        </div>
+        <div class="footer-section links">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">Offers</a></li>
+            <li><a href="#">Support</a></li>
+          </ul>
+        </div>
+        <div class="footer-section social">
+          <h3>Follow Us</h3>
+          <p>
+            <a href="#">Facebook</a> | <a href="#">Twitter</a> |
+            <a href="#">Instagram</a>
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 ElectroMart. All Rights Reserved.</p>
+      </div>
     </footer>
+
+    <script src="./js/home.js" type="module"></script>
   </body>
 </html>
