@@ -1,6 +1,6 @@
 import { CookieHandler } from "../../../js/cookie_handler.js";
 import { StyleHelper } from "../../../js/style.js";
-import { CurrentUser, SystemUsers } from "../../../js/user.js";
+import { SystemUsers } from "../../../js/user.js";
 import { Validation } from "../../../js/validation.js";
 
 // holding elements
@@ -15,7 +15,8 @@ loginBtn.addEventListener("click", () => {
     let user = SystemUsers.getUser(email);
     if (user.password === password) {
       if (rememberCheck.checked)
-        CookieHandler.addCookie("user", JSON.stringify(user), 2000);
+        CookieHandler.addCookie("user", JSON.stringify(user), 30);
+      window.sessionStorage.setItem("c-user", JSON.stringify(user));
       window.location.replace("../../Features/home/home.html");
       StyleHelper.resetValidations(validationSpan);
     } else {

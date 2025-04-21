@@ -126,26 +126,39 @@
           <button title="close-filter-icon"><i class="bi bi-x-lg"> </i></button>
         </div>
         <div class="filter-options">
-          <div class="filter-option">
+          <div class="filter-option brand-section">
             <h4>Brand</h4>
-            <label for="apple">Apple</label>
-            <input type="checkbox" id="apple" />
-            <label for="samsung">Samsung</label>
-            <input type="checkbox" id="samsung" />
+            <div class="brand-container"></div>
           </div>
-          <div class="filter-option">
+          <div class="filter-option price-section">
             <h4>Price</h4>
-            <input
-              type="range"
-              min="0"
-              max="1000"
-              value="500"
-              id="price-range"
-            />
-            <label for="price-range">500</label>
+            <div class="price-range">
+              <label for="min-price">Min Price</label>
+              <input
+                type="range"
+                id="min-price"
+                name="min-price"
+                min="0"
+                max="9000"
+                value="0"
+              />
+              <span class="price-value min">$0</span>
+              <br />
+              <label for="max-price">Max Price</label>
+              <input
+                type="range"
+                id="max-price"
+                name="max-price"
+                min="1000"
+                max="10000"
+                value="10000"
+              />
+              <span class="price-value max">$1000</span>
+            </div>
           </div>
         </div>
-        <button>Filter</button>
+        <br />
+        <button>Close</button>
       </div>
 
       <br />
@@ -155,7 +168,7 @@
           <hr />
           <div class="category-item-container">
             <ul>
-              <li>📱 All</li>
+              <li class="active-category">📱 All</li>
               <li>💻 Laptops</li>
               <li>📱 Mobiles</li>
               <li>🎧 Accessories</li>

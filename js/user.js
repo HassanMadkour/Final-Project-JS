@@ -53,12 +53,13 @@ export class CurrentUser {
   static #user = null;
 
   static {
-    const cookie = CookieHandler.getCookie("user");
+    let cookie = window.sessionStorage.getItem("c-user");
     if (cookie) {
-      try {
+      CurrentUser.#user = JSON.parse(cookie);
+    } else {
+      cookie = CookieHandler.getCookie("user");
+      if (cookie) {
         CurrentUser.#user = JSON.parse(cookie);
-      } catch (e) {
-        console.error("Invalid user cookie:", e);
       }
     }
   }

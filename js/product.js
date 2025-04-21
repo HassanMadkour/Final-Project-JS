@@ -490,3 +490,31 @@ export let products = [
     ["Backup", "HDD", "Portable"]
   ),
 ];
+
+export let categories = [
+  "All",
+  "Laptops",
+  "Mobiles",
+  "Accessories",
+  "Gaming",
+  "Cameras",
+  "Smartwatches",
+  "Monitors",
+  "Storage",
+];
+
+export const brands = [
+  "Apple",
+  "Samsung",
+  "Sony",
+  "HP",
+  "Dell",
+  "Canon",
+  "Logitech",
+  "Bose",
+  "ASUS",
+  "Microsoft",
+  "Acer",
+  "Lenovo",
+  "JBL",
+];
