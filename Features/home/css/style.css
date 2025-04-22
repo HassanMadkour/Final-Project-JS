@@ -15,7 +15,7 @@
 
 @keyframes translateUp {
     0% {
-        transform: translateY(25%);
+        transform: translateY(70%);
     }
 
     100% {
@@ -45,6 +45,15 @@ body {
 
 /* ///---------------Hero Section slider  */
 
+.ToUpButton {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: 900;
+}
 
 .hero-section {
     width: 100%;
@@ -196,12 +205,12 @@ body {
 
 
 
-.filter-icon {
+.search-bar .filter-icon {
     padding: 15px;
     border: none;
-    border-radius: none;
-    background-color: transparent;
-    color: black;
+    border-radius: 10px;
+    /* background-color: black; */
+    color: white;
     margin: 0px 20px;
 
     i {
@@ -440,6 +449,12 @@ body {
         cursor: pointer;
         font-size: 12px;
         font-weight: 900;
+    }
+
+    button:hover {
+        background-color: aqua;
+        cursor: pointer;
+        transform: translateY(-10%);
     }
 }
 

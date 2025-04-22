@@ -11,11 +11,10 @@ window.onscroll = () => {
   if (aboutSectionPosition < window.innerHeight - 350) {
     aboutImg.style.animation = "translate 0.5s ease-in-out forwards";
   }
-  let productSection = document.querySelector(".products-section");
   let cards = document.querySelectorAll(".product-item");
   cards.forEach((card, index) => {
     let cardPos = card.getBoundingClientRect().top;
-    if (cardPos < window.innerHeight + 250)
+    if (cardPos < window.innerHeight + 300)
       card.style.animation = `translateUp  .5s .${
         index % 4
       }s  ease-in-out forwards`;
@@ -165,12 +164,17 @@ function createProductItem(product) {
     localStorage.setItem("product", JSON.stringify(product));
     window.location.assign("../../Features/P-Info/product_info.html");
   });
-  // productItem.addEventListener("hover", () => {
-  //   productItem.style.transform += "scale(1.1)";
-  //   productItem.style.background = "red";
-  //   productItem.style.cursor = "pointer";
-  // });
-  if (productItem.getBoundingClientRect().top < window.innerHeight) {
+  //add hover style
+  productItem.addEventListener("mouseover", () => {
+    productItem.style.boxShadow = "10px 10px 10px rgba(0,0,0,0.1)";
+    productItem.style.backgroundColor = "#e65c00";
+    productItem.style.cursor = "pointer";
+  });
+  productItem.addEventListener("mouseout", () => {
+    productItem.style.boxShadow = "0px 0px 0px rgba(0,0,0,0.1)";
+    productItem.style.backgroundColor = "white";
+  });
+  if (productItem.getBoundingClientRect().top < window.innerHeight + 300) {
     productItem.style.animation = `translateUp 0.5s ease-in-out forwards`;
   }
   productsContainer.appendChild(productItem);
@@ -314,3 +318,7 @@ function applyFilterFunc() {
     createProductItem(product);
   });
 }
+let topBtn = document.querySelector(".ToUpButton");
+topBtn.addEventListener("click", () => {
+  window.scrollTo(0, 0);
+});
