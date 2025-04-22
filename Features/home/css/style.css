@@ -3,6 +3,26 @@
     src: url("../../../assets/fonts/Poppins-Regular.ttf");
 }
 
+@keyframes translate {
+    0% {
+        transform: translate(-100%, 50%);
+    }
+
+    100% {
+        transform: translate(0);
+    }
+}
+
+@keyframes translateUp {
+    0% {
+        transform: translateY(25%);
+    }
+
+    100% {
+        transform: translateY(0%);
+    }
+}
+
 :root {
     --primary-color: rgb(0, 166, 255);
 }
@@ -425,7 +445,7 @@ body {
 
 .product-item:hover {
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
-    transform: scale(1.1);
+    transform: translateY(0) scale(1.1);
 }
 
 
@@ -474,6 +494,7 @@ body {
 
 .about-image {
     flex: 1;
+    transform: translate(-100%, 50%);
 
     img {
         width: 100%;

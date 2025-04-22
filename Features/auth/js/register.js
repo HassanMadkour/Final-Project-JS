@@ -48,7 +48,7 @@ function validateInputs(email, password, repeatPassword, name) {
     StyleHelper.setValidation(validationSpans[0], "invalid name");
   }
   if (!Validation.validateAgreement(agreeCheck)) {
-    StyleHelper.setValidation(validationSpans[4], "you must agree");
+    StyleHelper.setValidation(validationSpans[4], "you must agree the terms");
   }
   if (Validation.existEmail(email)) {
     StyleHelper.setValidation(validationSpans[1], "email already exist");

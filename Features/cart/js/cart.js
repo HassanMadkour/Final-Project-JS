@@ -57,7 +57,8 @@ if (cart && cart.length > 0) {
   let checkoutBtn = document.querySelector(".checkout-btn");
   checkoutBtn.style.display = "block";
   checkoutBtn.addEventListener("click", () => {
-    window.location.assign("../../Features/checkout/checkout.html");
+    TheCart.clearCart();
+    window.location.assign("../../Features/cart/shipped.html");
   });
 } else {
   cartHolder.innerHTML = `<h3>Cart is empty</h3>`;

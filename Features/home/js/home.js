@@ -4,6 +4,24 @@ import { SliderItem } from "./slider_item.js";
 import { TheCart } from "../../../js/cart.js";
 import { OrderItem } from "../../../js/order_item.js";
 
+window.onscroll = () => {
+  let aboutSection = document.querySelector(".about-us");
+  let aboutImg = document.querySelector(".about-image");
+  let aboutSectionPosition = aboutSection.getBoundingClientRect().top;
+  if (aboutSectionPosition < window.innerHeight - 350) {
+    aboutImg.style.animation = "translate 0.5s ease-in-out forwards";
+  }
+  let productSection = document.querySelector(".products-section");
+  let cards = document.querySelectorAll(".product-item");
+  cards.forEach((card, index) => {
+    let cardPos = card.getBoundingClientRect().top;
+    if (cardPos < window.innerHeight + 250)
+      card.style.animation = `translateUp  .5s .${
+        index % 4
+      }s  ease-in-out forwards`;
+  });
+};
+
 // slider section
 let sliderItemsList = [
   new SliderItem(
@@ -13,18 +31,19 @@ let sliderItemsList = [
     "Step into style with our latest arrivals."
   ),
   new SliderItem(
-    "../../../assets/images/img2.png",
-    "Upgrade Your Workspace",
-    "Find everything you need to boost productivity and comfort.",
-    "Modern desks, chairs, and accessories."
-  ),
-  new SliderItem(
-    "../../../assets/images/img3.png",
+    "../../../assets/images/img.png",
     "Smart Gadgets for Smart Living",
     "Explore smartwatches, wireless chargers, and more innovative gear.",
 
     "Stay ahead with our cutting-edge tech."
   ),
+  new SliderItem(
+    "../../../assets/images/img2.png",
+    "Upgrade Your Workspace",
+    "Find everything you need to boost productivity and comfort.",
+    "Modern desks, chairs, and accessories."
+  ),
+
   new SliderItem(
     "../../../assets/images/hero1.png",
     "Fresh Deals Every Day",
@@ -55,18 +74,14 @@ function createSlide(item) {
   return sliderItem;
 }
 
-// Clone last slide and add at beginning
 slidesContainer.appendChild(createSlide(sliderItemsList[totalRealSlides - 1]));
 
-// Add real slides
 sliderItemsList.forEach((item) => {
   slidesContainer.appendChild(createSlide(item));
 });
 
-// Clone first slide and add at end
 slidesContainer.appendChild(createSlide(sliderItemsList[0]));
 
-// Set initial position
 slidesContainer.style.transform = `translateX(-${index * 100}%)`;
 
 function updateSlidePosition() {
@@ -96,12 +111,10 @@ prevSlideBtn.addEventListener("click", prevSlide);
 slidesContainer.addEventListener("transitionend", () => {
   isTransitioning = false;
   if (index === 0) {
-    // Jump to last real slide
     slidesContainer.style.transition = "none";
     index = totalRealSlides;
     slidesContainer.style.transform = `translateX(-${index * 100}%)`;
   } else if (index === totalRealSlides + 1) {
-    // Jump to first real slide
     slidesContainer.style.transition = "none";
     index = 1;
     slidesContainer.style.transform = `translateX(-${index * 100}%)`;
@@ -112,7 +125,9 @@ setInterval(nextSlide, 5000);
 //-------------products section
 
 let productsContainer = document.querySelector(".product-items-container");
+
 let displayedProducts = Array.from(products);
+let categoryProducts = Array.from(products);
 products.forEach((product) => {
   createProductItem(product);
 });
@@ -120,6 +135,8 @@ products.forEach((product) => {
 function createProductItem(product) {
   let productItem = document.createElement("div");
   productItem.classList.add("product-item");
+  productItem.style.transform = "translateY(100%)";
+
   productItem.innerHTML = `
    <div class="product-img-holder">
    <img src="../../../assets/images/products/${product.image}" alt="" />
@@ -148,6 +165,14 @@ function createProductItem(product) {
     localStorage.setItem("product", JSON.stringify(product));
     window.location.assign("../../Features/P-Info/product_info.html");
   });
+  // productItem.addEventListener("hover", () => {
+  //   productItem.style.transform += "scale(1.1)";
+  //   productItem.style.background = "red";
+  //   productItem.style.cursor = "pointer";
+  // });
+  if (productItem.getBoundingClientRect().top < window.innerHeight) {
+    productItem.style.animation = `translateUp 0.5s ease-in-out forwards`;
+  }
   productsContainer.appendChild(productItem);
 }
 //search bar
@@ -199,14 +224,14 @@ brandInputs.forEach((input) => {
     } else {
       checkedBrands = checkedBrands.filter((brand) => brand !== input.id);
     }
-    productsContainer.innerHTML = "";
-    let brandedProducts = FilterHelper.filterByBrand(
-      displayedProducts,
-      checkedBrands
-    );
-    brandedProducts.forEach((product) => {
-      createProductItem(product);
-    });
+    //   productsContainer.innerHTML = "";
+    //   let brandedProducts = FilterHelper.filterByBrand(
+    //     displayedProducts,
+    //     checkedBrands
+    //   );
+    //   brandedProducts.forEach((product) => {
+    //     createProductItem(product);
+    //   });
   });
 });
 
@@ -219,13 +244,23 @@ categoryBtns.forEach((btn, index) => {
   btn.addEventListener("click", () => {
     btn.classList.add("active-category");
     productsContainer.innerHTML = "";
-    displayedProducts = FilterHelper.filterByCategory(
+    categoryProducts = FilterHelper.filterByCategory(
       products,
       categories[index]
+    );
+    displayedProducts = FilterHelper.filterByPrice(
+      categoryProducts,
+      priceRanges[0].value,
+      priceRanges[1].value
+    );
+    displayedProducts = FilterHelper.filterByBrand(
+      displayedProducts,
+      checkedBrands
     );
     displayedProducts.forEach((product) => {
       createProductItem(product);
     });
+
     categoryBtns.forEach((btn2) => {
       if (btn2 !== btn) {
         btn2.classList.remove("active-category");
@@ -246,15 +281,36 @@ priceRanges.forEach((range, index) => {
       ? (minPrice.innerText = `$${range.value}`)
       : (maxPrice.innerText = `$${range.value}`);
   });
-  range.addEventListener("change", () => {
-    productsContainer.innerHTML = "";
-    displayedProducts = FilterHelper.filterByPrice(
-      products,
-      priceRanges[0].value,
-      priceRanges[1].value
-    );
-    displayedProducts.forEach((product) => {
-      createProductItem(product);
-    });
-  });
+  // range.addEventListener("change", () => {
+  //   productsContainer.innerHTML = "";
+  //   let pricesProducts = FilterHelper.filterByPrice(
+  //     displayedProducts,
+  //     priceRanges[0].value,
+  //     priceRanges[1].value
+  //   );
+
+  // pricesProducts.forEach((product) => {
+  //   createProductItem(product);
+  // });
+  // });
 });
+let applyFilterBtn = document.querySelector(".apply-filter-btn");
+console.log(applyFilterBtn);
+applyFilterBtn.addEventListener("click", applyFilterFunc);
+
+function applyFilterFunc() {
+  productsContainer.innerHTML = "";
+
+  displayedProducts = FilterHelper.filterByPrice(
+    categoryProducts,
+    priceRanges[0].value,
+    priceRanges[1].value
+  );
+  displayedProducts = FilterHelper.filterByBrand(
+    displayedProducts,
+    checkedBrands
+  );
+  displayedProducts.forEach((product) => {
+    createProductItem(product);
+  });
+}
