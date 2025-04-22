@@ -1,62 +1,114 @@
-import { CookieHandler } from "../../../js/cookie_handler.js";
 import { FilterHelper } from "../../../js/filter_helper.js";
 import { products, categories, brands } from "../../../js/product.js";
-import { CurrentUser } from "../../../js/user.js";
 import { SliderItem } from "./slider_item.js";
-
-let usernameEle = document.querySelector(".logo span");
-console.log(usernameEle);
-usernameEle.innerText = `Hi, ${CurrentUser.user.name}`;
-let logoutBtn = document.querySelector(".logout-btn");
-logoutBtn.addEventListener("click", () => {
-  CookieHandler.deleteCookie("user");
-  window.location.replace("../../Features/auth/login.html");
-});
+import { TheCart } from "../../../js/cart.js";
+import { OrderItem } from "../../../js/order_item.js";
 
 // slider section
 let sliderItemsList = [
   new SliderItem(
     "../../../assets/images/img1.png",
-    "title",
-    "description",
-    "lorem 3"
+    "Discover the New Collection",
+    "Browse a curated selection of this season's best fashion essentials.Also check out our latest arrivals. Discover the latest fashion trends and shop now.",
+    "Step into style with our latest arrivals."
   ),
   new SliderItem(
     "../../../assets/images/img2.png",
-    "title",
-    "description",
-    "lorem 3"
+    "Upgrade Your Workspace",
+    "Find everything you need to boost productivity and comfort.",
+    "Modern desks, chairs, and accessories."
   ),
   new SliderItem(
     "../../../assets/images/img3.png",
-    "title",
-    "description",
-    "lorem 3"
+    "Smart Gadgets for Smart Living",
+    "Explore smartwatches, wireless chargers, and more innovative gear.",
+
+    "Stay ahead with our cutting-edge tech."
   ),
   new SliderItem(
     "../../../assets/images/hero1.png",
-    "title",
-    "description",
-    "lorem 3"
+    "Fresh Deals Every Day",
+    "Shop our daily deals and enjoy exclusive discounts on top products.",
+    "Save big on your favorite items."
   ),
 ];
 
-let sliderItems = document.querySelectorAll(".slider-item");
-let prevSlider = sliderItems[0];
-let nextSlider = sliderItems[2];
-let activeSlider = sliderItems[1];
-let currentIndex = 0;
+const slidesContainer = document.querySelector(".slides");
+const totalRealSlides = sliderItemsList.length;
+let index = 1;
+let isTransitioning = false;
 
-sliderItems[currentIndex].classList.add("active");
+// Helper function to create a slide DOM
+function createSlide(item) {
+  const sliderItem = document.createElement("div");
+  sliderItem.classList.add("slider-item");
+  sliderItem.style.backgroundImage = `url(${item.img})`;
+  sliderItem.innerHTML = `
+    <div class="slider-content">
+      <h2>${item.title}</h2>
+      <p>${item.desc}</p>
+      <br />
+      <p>${item.paragraph}</p>
+      <a href="#products">Shop Now</a>
+    </div>
+  `;
+  return sliderItem;
+}
 
-setInterval(() => {
-  sliderItems[currentIndex].classList.remove("active");
+// Clone last slide and add at beginning
+slidesContainer.appendChild(createSlide(sliderItemsList[totalRealSlides - 1]));
 
-  currentIndex = (currentIndex + 1) % sliderItemsList.length;
+// Add real slides
+sliderItemsList.forEach((item) => {
+  slidesContainer.appendChild(createSlide(item));
+});
 
-  sliderItems[currentIndex].classList.add("active");
-}, 10000);
+// Clone first slide and add at end
+slidesContainer.appendChild(createSlide(sliderItemsList[0]));
 
+// Set initial position
+slidesContainer.style.transform = `translateX(-${index * 100}%)`;
+
+function updateSlidePosition() {
+  slidesContainer.style.transition = "transform 0.5s ease-in-out";
+  slidesContainer.style.transform = `translateX(-${index * 100}%)`;
+}
+
+function nextSlide() {
+  if (isTransitioning) return;
+  index++;
+  updateSlidePosition();
+  isTransitioning = true;
+}
+
+function prevSlide() {
+  if (isTransitioning) return;
+  index--;
+  updateSlidePosition();
+  isTransitioning = true;
+}
+let nextSlideBtn = document.querySelector(".next-slide");
+let prevSlideBtn = document.querySelector(".prev-slide");
+
+nextSlideBtn.addEventListener("click", nextSlide);
+prevSlideBtn.addEventListener("click", prevSlide);
+
+slidesContainer.addEventListener("transitionend", () => {
+  isTransitioning = false;
+  if (index === 0) {
+    // Jump to last real slide
+    slidesContainer.style.transition = "none";
+    index = totalRealSlides;
+    slidesContainer.style.transform = `translateX(-${index * 100}%)`;
+  } else if (index === totalRealSlides + 1) {
+    // Jump to first real slide
+    slidesContainer.style.transition = "none";
+    index = 1;
+    slidesContainer.style.transform = `translateX(-${index * 100}%)`;
+  }
+});
+
+setInterval(nextSlide, 5000);
 //-------------products section
 
 let productsContainer = document.querySelector(".product-items-container");
@@ -70,7 +122,7 @@ function createProductItem(product) {
   productItem.classList.add("product-item");
   productItem.innerHTML = `
    <div class="product-img-holder">
-   <img src="../../../assets/images/products/${product.category}/ ${product.image}" alt="" />
+   <img src="../../../assets/images/products/${product.image}" alt="" />
    </div>
    <div class="product-info">
    <h4 class="product-name">${product.name}</h4>
@@ -81,7 +133,18 @@ function createProductItem(product) {
    </div>
    </div>
    `;
-  productItem.addEventListener("click", () => {
+  let addToCartBtn = productItem.querySelector("button");
+  addToCartBtn.addEventListener("click", (event) => {
+    event.stopPropagation();
+
+    if (confirm("Are you sure you want to add this product to the cart?")) {
+      TheCart.addToCart(new OrderItem(product, 1));
+      window.location.reload();
+    }
+  });
+  productItem.addEventListener("click", (event) => {
+    event.stopPropagation();
+
     localStorage.setItem("product", JSON.stringify(product));
     window.location.assign("../../Features/P-Info/product_info.html");
   });

@@ -9,7 +9,9 @@ body {
 
 .container {
     height: 65vh;
-    width: 85%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 90%;
     max-width: 1000px;
     margin: 40px auto;
     display: flex;
@@ -29,6 +31,7 @@ body {
 
 .product-image img {
     height: 100%;
+    width: 100%;
     border-radius: 12px;
 }
 
@@ -65,6 +68,24 @@ body {
 .actions {
     display: flex;
     gap: 15px;
+}
+
+.quantity {
+    margin: 20px 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.quantity button {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    background: #eee;
+    color: #444;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
 }
 
 .btn {

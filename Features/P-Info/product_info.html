@@ -7,22 +7,29 @@
     <link rel="stylesheet" href="../../css/global.css" />
     <link rel="stylesheet" href="./css/style.css" />
     <link rel="stylesheet" href="./css/media-query.css" />
+    <link rel="stylesheet" href="../../css/bootstrap-icons.min.css" />
   </head>
   <body>
     <header>
       <div class="header-holder">
         <div class="logo">
-          <span>Hi, Hassan</span>
+          <span></span>
           <div class="cart-icon">
-            <i class="bi bi-cart"></i>
+            <i class="bi bi-cart">
+              <div class="cart-count">0</div>
+            </i>
           </div>
         </div>
         <nav class="nav-holder">
           <ul>
-            <li>Home</li>
-            <li>About us</li>
-            <li>Products</li>
-            <li>contact</li>
+            <li>
+              <a href="../../Features/home/home.html">Home</a>
+            </li>
+            <li><a href="../../Features/home/home.html#about">About us</a></li>
+            <li>
+              <a href="../../Features/home/home.html#products">Products</a>
+            </li>
+            <li><a href="../../Features/home/home.html#contact">contact</a></li>
           </ul>
         </nav>
         <div class="logout-holder">
@@ -32,17 +39,19 @@
     </header>
     <div class="container">
       <div class="product-image">
-        <img src="../../assets/images/pro1.png" alt="Product" />
+        <img src="" alt="Product" />
       </div>
       <div class="product-details">
-        <h1 class="product-title">Wireless Over-Ear Headphones</h1>
-        <div class="product-price">$500</div>
+        <h1 class="product-title">Title</h1>
+        <div class="product-price">$0</div>
         <div class="rating">★★★★☆ (120 reviews)</div>
-        <div class="product-description">
-          Experience premium sound and deep bass with our wireless over-ear
-          headphones. Featuring noise cancellation, 30-hour battery life, and a
-          comfortable fit for long listening sessions. Ideal for music lovers,
-          gamers, and professionals.
+        <div class="product-description"></div>
+        <div class="quantity">
+          <button class="dec-btn">-</button>
+          <span>1</span>
+          <button class="inc-btn">+</button>
+          <!-- total price  -->
+          <span class="total-price"></span>
         </div>
         <div class="actions">
           <button class="btn btn-cart">Add to Cart</button>
@@ -54,5 +63,8 @@
         </div>
       </div>
     </div>
+    <script src="../../js/header.js" type="module"></script>
+
+    <script src="./js/p_info.js" type="module"></script>
   </body>
 </html>

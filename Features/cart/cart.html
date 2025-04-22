@@ -13,18 +13,24 @@
       <header>
         <div class="header-holder">
           <div class="logo">
-            <span>Hi, Hassan</span>
+            <span></span>
             <div class="cart-icon">
-              <i class="bi bi-cart"></i>  
-  
+              <i class="bi bi-cart">
+                <div class="cart-count">0</div>
+
+              </i>
             </div>
           </div>
           <nav class="nav-holder">
             <ul>
-              <li>Home</li>
-              <li>About us</li>
-              <li>Products</li>
-              <li>contact</li>
+              <li>
+                <a href="../../Features/home/home.html">Home</a>
+              </li>
+              <li><a href="../../Features/home/home.html#about">About us</a></li>
+              <li>
+                <a href="../../Features/home/home.html#products">Products</a>
+              </li>
+              <li><a href="../../Features/home/home.html#contact">contact</a></li>
             </ul>
           </nav>
           <div class="logout-holder">
@@ -34,43 +40,13 @@
       </header>
     <div class="container">
       <h2>Your Shopping Cart</h2>
-
-      <div class="cart-item">
-        <div class="item-info">
-          <img src="../../assets/images/pro1.png" alt="Product" />
-          <div class="item-details">
-            <span class="item-name">Wireless Headphones</span>
-            <span class="item-price">$500</span>
-            <i class="bi bi-trash remove-btn"> </i>
-          </div>
-        </div>
-        <div class="quantity">
-          <button>-</button>
-          <span>1</span>
-          <button>+</button>
-        </div>
-      </div>
-
-      <div class="cart-item">
-        <div class="item-info">
-          <img src="../../assets/images/pro1.png" alt="Product" />
-          <div class="item-details">
-            <span class="item-name">Smart Watch</span>
-            <span class="item-price">$250</span>
-            <i class="bi bi-trash remove-btn"> </i>
-          </div>
-        </div>
-        <div class="quantity">
-          <button>-</button>
-          <span>2</span>
-          <button>+</button>
-        </div>
-      </div>
-
+      <div class="cart-items"></div>
       <div class="summary">
-        <div class="total">Total: $1000</div>
+        <div class="total">Total: $0</div>
         <button class="checkout-btn">Proceed to Checkout</button>
       </div>
     </div>
+    <script src="../../js/header.js" type="module"></script>
+    <script src="./js/cart.js" type="module"></script>
   </body>
 </html>
