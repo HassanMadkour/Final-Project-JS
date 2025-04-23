@@ -2,7 +2,7 @@ import { SystemUsers } from "./user.js";
 
 export class Validation {
   static validateEmail(email) {
-    const re = /^[^\s@$]+@[a-zA-Z0-9-]+\.[a-zA-Z]{2,3}$/;
+    const re = /^[^\s@$]+@[a-zA-Z0-9]+[-]?[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/;
     return re.test(String(email).toLowerCase());
   }
 
