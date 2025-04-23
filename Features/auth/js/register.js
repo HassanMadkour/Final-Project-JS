@@ -39,7 +39,10 @@ function validateInputs(email, password, repeatPassword, name) {
     StyleHelper.setValidation(validationSpans[1], "invalid email");
   }
   if (!Validation.validatePassword(password)) {
-    StyleHelper.setValidation(validationSpans[2], "weak password");
+    StyleHelper.setValidation(
+      validationSpans[2],
+      "weak password (upper-case, number, special char)"
+    );
   }
   if (!Validation.validateRepeatPassword(password, repeatPassword)) {
     StyleHelper.setValidation(validationSpans[3], "passwords do not match");
