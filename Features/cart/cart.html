@@ -4,40 +4,38 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shopping Cart</title>
-    <link rel="stylesheet" href="/css/global.css" />
-    <link rel="stylesheet" href="/css/bootstrap-icons.min.css" />
-    <link rel="stylesheet" href="/Features/cart/css/style.css" />
+    <link rel="stylesheet" href="../../css/global.css" />
+    <link rel="stylesheet" href="../../css/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
-    <body>
-      <header>
-        <div class="header-holder">
-          <div class="logo">
-            <span></span>
-            <div class="cart-icon">
-              <i class="bi bi-cart">
-                <div class="cart-count">0</div>
-
-              </i>
-            </div>
-          </div>
-          <nav class="nav-holder">
-            <ul>
-              <li>
-                <a href="/Features/home/home.html">Home</a>
-              </li>
-              <li><a href="/Features/home/home.html#about">About us</a></li>
-              <li>
-                <a href="/Features/home/home.html#products">Products</a>
-              </li>
-              <li><a href="/Features/home/home.html#contact">contact</a></li>
-            </ul>
-          </nav>
-          <div class="logout-holder">
-            <button class="logout-btn">Logout</button>
+    <header>
+      <div class="header-holder">
+        <div class="logo">
+          <span></span>
+          <div class="cart-icon">
+            <i class="bi bi-cart">
+              <div class="cart-count">0</div>
+            </i>
           </div>
         </div>
-      </header>
+        <nav class="nav-holder">
+          <ul>
+            <li>
+              <a href="../home/home.html">Home</a>
+            </li>
+            <li><a href="../home/home.html#about">About us</a></li>
+            <li>
+              <a href="../home/home.html#products">Products</a>
+            </li>
+            <li><a href="../home/home.html#contact">contact</a></li>
+          </ul>
+        </nav>
+        <div class="logout-holder">
+          <button class="logout-btn">Logout</button>
+        </div>
+      </div>
+    </header>
     <div class="container">
       <h2>Your Shopping Cart</h2>
       <div class="cart-items"></div>
@@ -46,7 +44,7 @@
         <button class="checkout-btn">Proceed to Checkout</button>
       </div>
     </div>
-    <script src="/js/header.js" type="module"></script>
+    <script src="../../js/header.js" type="module"></script>
     <script src="./js/cart.js" type="module"></script>
   </body>
 </html>

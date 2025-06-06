@@ -1,6 +1,6 @@
 @font-face {
     font-family: "Poppins";
-    src: url("/assets/fonts/Poppins-Regular.ttf");
+    src: url("../../../assets/fonts/Poppins-Regular.ttf");
 }
 
 @keyframes translate {
@@ -15,7 +15,7 @@
 
 @keyframes translateUp {
     0% {
-        transform: translateY(70%);
+        transform: translateY(25%);
     }
 
     100% {
@@ -205,12 +205,12 @@ body {
 
 
 
-.search-bar .filter-icon {
+.filter-icon {
     padding: 15px;
     border: none;
-    border-radius: 10px;
-    /* background-color: black; */
-    color: white;
+    border-radius: none;
+    background-color: transparent;
+    color: black;
     margin: 0px 20px;
 
     i {
@@ -450,17 +450,11 @@ body {
         font-size: 12px;
         font-weight: 900;
     }
-
-    button:hover {
-        background-color: aqua;
-        cursor: pointer;
-        transform: translateY(-10%);
-    }
 }
 
 .product-item:hover {
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
-    transform: translateY(0) scale(1.1);
+    transform: scale(1.1);
 }
 
 

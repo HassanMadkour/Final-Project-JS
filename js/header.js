@@ -1,6 +1,6 @@
-import { CurrentUser } from "/js/user.js";
-import { CookieHandler } from "/js/cookie_handler.js";
-import { TheCart } from "/js/cart.js";
+import { CurrentUser } from "./user.js";
+import { CookieHandler } from "./cookie_handler.js";
+import { TheCart } from "./cart.js";
 
 let usernameEle = document.querySelector(".logo span");
 console.log(usernameEle);
@@ -16,7 +16,7 @@ logoutBtn.addEventListener("click", () => {
   sessionStorage.removeItem("c-user");
   CurrentUser.user = null;
   TheCart.clearCart();
-  window.location.replace("/Features/auth/login.html");
+  window.location.replace("../../Features/auth/login.html");
 });
 let cart = TheCart.getCart();
 if (cart && cart.length > 0) {

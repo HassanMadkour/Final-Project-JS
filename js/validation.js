@@ -1,4 +1,4 @@
-import { SystemUsers } from "/js/user.js";
+import { SystemUsers } from "./user.js";
 
 export class Validation {
   static validateEmail(email) {

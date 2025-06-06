@@ -230,7 +230,7 @@ export let products = [
     "Anker PowerCore 10000",
     "Portable Charger with Fast Charging",
     29,
-    "ank.jpg",
+    "anker-powercore.jpg",
     "Anker",
     "Accessories",
     4.6,
