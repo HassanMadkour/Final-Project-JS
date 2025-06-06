@@ -1,4 +1,4 @@
-import { OrderItem } from "./order_item.js";
+import { OrderItem } from "/js/order_item.js";
 export class TheCart {
   static #cart = [];
   static {

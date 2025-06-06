@@ -1,4 +1,4 @@
-import { CookieHandler } from "./cookie_handler.js";
+import { CookieHandler } from "/js/cookie_handler.js";
 
 export class User {
   constructor(name, email, password) {

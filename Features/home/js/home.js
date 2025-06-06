@@ -1,8 +1,8 @@
-import { FilterHelper } from "../../../js/filter_helper.js";
-import { products, categories, brands } from "../../../js/product.js";
+import { FilterHelper } from "/js/filter_helper.js";
+import { products, categories, brands } from "/js/product.js";
 import { SliderItem } from "./slider_item.js";
-import { TheCart } from "../../../js/cart.js";
-import { OrderItem } from "../../../js/order_item.js";
+import { TheCart } from "/js/cart.js";
+import { OrderItem } from "/js/order_item.js";
 
 window.onscroll = () => {
   let aboutSection = document.querySelector(".about-us");
@@ -24,27 +24,27 @@ window.onscroll = () => {
 // slider section
 let sliderItemsList = [
   new SliderItem(
-    "../../../assets/images/img1.png",
+    "/assets/images/img1.png",
     "Discover the New Collection",
     "Browse a curated selection of this season's best fashion essentials.Also check out our latest arrivals. Discover the latest fashion trends and shop now.",
     "Step into style with our latest arrivals."
   ),
   new SliderItem(
-    "../../../assets/images/img.png",
+    "/assets/images/img.png",
     "Smart Gadgets for Smart Living",
     "Explore smartwatches, wireless chargers, and more innovative gear.",
 
     "Stay ahead with our cutting-edge tech."
   ),
   new SliderItem(
-    "../../../assets/images/img2.png",
+    "/assets/images/img2.png",
     "Upgrade Your Workspace",
     "Find everything you need to boost productivity and comfort.",
     "Modern desks, chairs, and accessories."
   ),
 
   new SliderItem(
-    "../../../assets/images/hero1.png",
+    "/assets/images/hero1.png",
     "Fresh Deals Every Day",
     "Shop our daily deals and enjoy exclusive discounts on top products.",
     "Save big on your favorite items."
@@ -138,7 +138,7 @@ function createProductItem(product) {
 
   productItem.innerHTML = `
    <div class="product-img-holder">
-   <img src="../../../assets/images/products/${product.image}" alt="" />
+   <img src="/assets/images/products/${product.image}" alt="" />
    </div>
    <div class="product-info">
    <h4 class="product-name">${product.name}</h4>
@@ -167,11 +167,13 @@ function createProductItem(product) {
   //add hover style
   productItem.addEventListener("mouseover", () => {
     productItem.style.boxShadow = "10px 10px 10px rgba(0,0,0,0.1)";
-    productItem.style.backgroundColor = "#e65c00";
+    productItem.style.scale = "1.08";
+    productItem.style.transition = "all 0.2s ease";
     productItem.style.cursor = "pointer";
   });
   productItem.addEventListener("mouseout", () => {
     productItem.style.boxShadow = "0px 0px 0px rgba(0,0,0,0.1)";
+    productItem.style.scale = "1";
     productItem.style.backgroundColor = "white";
   });
   if (productItem.getBoundingClientRect().top < window.innerHeight + 300) {
