@@ -2,7 +2,6 @@ import { TheCart } from "../../../js/cart.js";
 import { OrderItem } from "../../../js/order_item.js";
 
 let product = JSON.parse(localStorage.getItem("product"));
-console.log(product, "---------------------");
 if (product) {
   let orderItem = new OrderItem(product, 1);
 
@@ -17,7 +16,7 @@ if (product) {
   let totalPrice = document.querySelector(".total-price");
   let addToCartBtn = document.querySelector(".btn-cart");
 
-  productImg.src = `../../../assets/images/products/${product.image}`;
+  productImg.src = `../../assets/images/products/${product.image}`;
   productName.innerText = product.name;
   productPrice.innerText = `$${product.price}`;
   productDesc.innerText = product.description;
